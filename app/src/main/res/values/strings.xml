@@ -5,4 +5,47 @@
     <string name="wr_email">Enter your email</string>
     <string name="wr_password">Enter your password</string>
     <string name="wr_name">Enter your name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_for_screen">ActivityForScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="all_day_achieve">Achieve all goal</string>
+    <string name="achieve">Achieves</string>
+    <string name="award">Award</string>
+    <string name="today_ach">Today achieve</string>
+    <string name="left_ach">Left one</string>
+    <string name="add_ac">Add</string>
+    <string name="havt_achieve">You haven\'t any achieves</string>
+    <string name="changeText">Enter change text</string>
+    <string name="add_first">Add first achieve</string>
+    <string name="Change">Change</string>
+    <string name="isComplete">Is achieve complete\?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="thisWeek">This week</string>
+    <string name="m">M</string>
+    <string name="t">T</string>
+    <string name="w">W</string>
+    <string name="f">F</string>
+    <string name="s">S</string>
+    <string name="prevTime">Everyday time to alarm</string>
+    <string name="timeAlarm">Time of alarm</string>
+    <string name="ckAch">Mark done achieves</string>
+    <string name="choose">Choose</string>
+    <string name="findText">Enter text</string>
+    <string name="clearNon">Clear non-achieve</string>
+    <string name="annotation">How to use it</string>
+    <string name="info">Info</string>
+    <string name="howUse">Here you can write down your goals for the day. At the beginning, you will choose at what time you would like to receive a reminder to mark the goal.</string>
+    <string name="howAdd">How to add new goal</string>
+    <string name="textAdd">On the home screen there is a plus sign (near the \"Achieves\"), you need to click on it.</string>
+    <string name="noAch">If you do not have a single goal, then there will be a button \"Add first achieve\", you must click on it.</string>
+    <string name="changName">Change your name</string>
+
 </resources>

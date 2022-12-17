@@ -18,25 +18,16 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_reg"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:paddingHorizontal="15dp"
             android:text="@string/reg_str"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/white"
             android:background="@drawable/bg_button_firscreen"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_log"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/comfortaa"
-            android:text="@string/log_str"
-            android:textSize="16dp"
-            android:textColor="@color/white"
-            android:background="@drawable/bg_button_firscreen"/>
     </LinearLayout>
 
 </RelativeLayout>

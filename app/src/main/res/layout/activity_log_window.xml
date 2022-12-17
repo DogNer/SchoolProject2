@@ -44,13 +44,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
-        android:layout_below="@+id/interaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_firscreen"
+        android:layout_below="@+id/interaction"
         android:layout_marginHorizontal="30dp"
-        android:textColor="@color/white"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/bg_button_firscreen"
         android:text="@string/log_str"
-        android:layout_marginTop="100dp"/>
+        android:textColor="@color/white" />
 
 </RelativeLayout>

@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:background="@color/black"
+    android:id="@+id/container">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Write your goal"
+            style="@style/TextAppear"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:layout_margin="15dp"/>
+
+        <EditText
+            android:id="@+id/str_achieve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_solid_white"
+            android:layout_marginVertical="15dp"
+            android:textSize="18dp"
+            android:hint="@string/wr_name"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <CheckBox
+            android:id="@+id/boxCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:text="Check punctuation"
+            style="@style/TextAppear"
+            android:layout_margin="15dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/interaction"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/btn_white"
+            android:text="@string/add_ac"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</RelativeLayout>

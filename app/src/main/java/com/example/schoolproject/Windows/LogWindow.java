@@ -1,6 +1,7 @@
 package com.example.schoolproject.Windows;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ public class LogWindow extends AppCompatActivity {
 
     ImageButton btnBack;
     EditText strName, strEmail, strPass;
+
+    AppCompatButton btnLog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +28,19 @@ public class LogWindow extends AppCompatActivity {
         strEmail = findViewById(R.id.str_email);
         strPass = findViewById(R.id.str_pass);
 
+
         btnBack = findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LogWindow.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnLog = findViewById(R.id.btn_reg);
+        btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogWindow.this, MainActivity.class);

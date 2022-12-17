@@ -8,8 +8,15 @@
 
 
 class stringfind {
-
+    public:
+        int cntLeter(string )
+    private:
+        String res;
 };
+
+int stringfind::cntLeter(string res){
+    cout << "dfg";
+}
 
 
 

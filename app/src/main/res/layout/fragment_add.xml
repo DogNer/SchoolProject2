@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Screen.AddFragment">
+    tools:context=".Screen.AddFragment"
+    android:background="@color/black">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Write your goal"
+            style="@style/TextAppear"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:layout_margin="15dp"/>
+
+        <EditText
+            android:id="@+id/str_achieve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_solid_white"
+            android:layout_marginVertical="15dp"
+            android:textSize="18dp"
+            android:hint="@string/wr_name"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/interaction"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/btn_white"
+            android:text="@string/add_ac"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -3,11 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable-anydpi/ic_back.xml" value="0.245" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable-anydpi/ic_calendar.xml" value="0.245" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable-anydpi/ic_delete.xml" value="0.245" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable-anydpi/ic_down.xml" value="0.245" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable-anydpi/ic_exit.xml" value="0.245" />
         <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/bg_button_firscreen.xml" value="0.236" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/bg_item_goal.xml" value="0.181" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/bg_search_goal.xml" value="0.2065" />
         <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/btn_solid_black.xml" value="0.1695" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/btn_solid_white.xml" value="0.224" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/btn_white.xml" value="0.224" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/dg_white_corner.xml" value="0.125" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/dialog_edit_goal.xml" value="0.117" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/pb_circular_determinative.xml" value="0.1555" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/drawable/round_clock.xml" value="0.154" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_act_for_screen.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_add.xml" value="0.4" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_clock.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_edit.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_edit_alarm.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_log_window.xml" value="0.152" />
-        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_register_window.xml" value="0.19427083333333334" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_personal_clock.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_register_window.xml" value="0.176" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/activity_search_window.xml" value="0.2" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/clock_layout.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/dg_clock.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/dg_edit_name.xml" value="0.253125" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/dg_is_done.xml" value="0.2" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/dg_mark_achieve.xml" value="0.176" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/dialog_info.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/fragment_add.xml" value="0.2" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/item_achieve.xml" value="0.264" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/layout/statistics_layaout.xml" value="0.12310030395136778" />
+        <entry key="..\:/Users/danam/AndroidStudioProjects/SchoolProject/app/src/main/res/menu/bottom_nav.xml" value="0.23854166666666668" />
       </map>
     </option>
   </component>
