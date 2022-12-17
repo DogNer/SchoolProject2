@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bkground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="15dp"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_reg"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/reg_str"
+            android:textSize="16dp"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_button_firscreen"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_log"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/comfortaa"
+            android:text="@string/log_str"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_button_firscreen"/>
+    </LinearLayout>
+
+</RelativeLayout>

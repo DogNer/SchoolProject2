@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SchoolProject</string>
+    <string name="reg_str">Register</string>
+    <string name="log_str">Log in</string>
+    <string name="wr_email">Enter your email</string>
+    <string name="wr_password">Enter your password</string>
+    <string name="wr_name">Enter your name</string>
+</resources>
