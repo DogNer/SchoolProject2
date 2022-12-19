@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -139,13 +140,27 @@ public class ProfileFragment extends Fragment{
         btnEditName = view.findViewById(R.id.edit_name);
         btnEditTime = view.findViewById(R.id.edit_time);
 
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int screenWidth = 200;
+
         Paint paint = new Paint();
         surfaceView = view.findViewById(R.id.surface);
-        Bitmap bg = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        Bitmap bg = Bitmap.createBitmap(50, 100, Bitmap.Config.ARGB_8888);
 
         Canvas canvas = new Canvas(bg);
         paint.setColor(Color.RED);
-        canvas.drawRect(50, 50, 200, 200, paint);
+
+        int top = 0, right = screenWidth / 7;
+
+        Toast.makeText(getContext(), "" + screenWidth, Toast.LENGTH_SHORT).show();
+        canvas.drawRect(0, 0, 80, 50, paint);
+
+        /*for (int i = 0; i < 7; ++i){
+            canvas.drawRect(top, 0, right, 80, paint);
+            top += 40;
+            right += 40;
+        }*/
+
         surfaceView.setBackground(new BitmapDrawable(bg));
 
 
@@ -207,6 +222,10 @@ public class ProfileFragment extends Fragment{
 
 
         return view;
+    }
+
+    private int convertDpToPx(int dp){
+        return Math.round(dp * (getResources().getDisplayMetrics().xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
     private void dialogEditName(Context context) {

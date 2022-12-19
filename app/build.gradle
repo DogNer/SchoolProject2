@@ -46,8 +46,8 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:30.4.1')
     implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.code.gson:gson:2.8.5'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
     implementation "com.mikhaellopez:circularprogressbar:1.0.0"
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
