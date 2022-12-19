@@ -12,11 +12,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
@@ -31,6 +36,8 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -45,6 +52,7 @@ import android.widget.Toast;
 
 import com.example.schoolproject.ActForScreen;
 import com.example.schoolproject.Adapter.AchieveAdapter;
+import com.example.schoolproject.Draw.DrawRectangle;
 import com.example.schoolproject.Modal.GoalModal;
 import com.example.schoolproject.Personal_clock;
 import com.example.schoolproject.R;
@@ -83,6 +91,9 @@ public class ProfileFragment extends Fragment{
     LinearLayout checkTHowUse, disAdd, checkTAdd;
     ImageView btnBack, btnBackName;
     EditText nameCh;
+
+    DrawRectangle drawRec;
+    LinearLayout surfaceView;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -127,6 +138,15 @@ public class ProfileFragment extends Fragment{
         btnInfo = view.findViewById(R.id.btn_annotation);
         btnEditName = view.findViewById(R.id.edit_name);
         btnEditTime = view.findViewById(R.id.edit_time);
+
+        Paint paint = new Paint();
+        surfaceView = view.findViewById(R.id.surface);
+        Bitmap bg = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bg);
+        paint.setColor(Color.RED);
+        canvas.drawRect(50, 50, 200, 200, paint);
+        surfaceView.setBackground(new BitmapDrawable(bg));
 
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
@@ -184,6 +204,8 @@ public class ProfileFragment extends Fragment{
                 dialogEditName(getContext());
             }
         });
+
+
         return view;
     }
 
