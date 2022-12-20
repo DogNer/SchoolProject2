@@ -397,7 +397,7 @@ public class ProfileFragment extends Fragment{
         editor.putString("arrayStat", json_arr);
 
         editor.apply();
-        //
+        //t
     }
 
     private void loadDataAll() {
