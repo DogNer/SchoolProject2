@@ -35,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -129,7 +130,10 @@ public class ProfileFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        //createNotificationChannel();
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+        SharedPreferences.Editor editer = sp.edit();
+        loadDataAll();
+
         userName = view.findViewById(R.id.user_name);
 
         AlarmTime = view.findViewById(R.id.textAlarm);
@@ -140,32 +144,35 @@ public class ProfileFragment extends Fragment{
         btnEditName = view.findViewById(R.id.edit_name);
         btnEditTime = view.findViewById(R.id.edit_time);
 
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        int screenWidth = 200;
+        Display displayMetrics = getActivity().getWindowManager().getDefaultDisplay();
+
 
         Paint paint = new Paint();
         surfaceView = view.findViewById(R.id.surface);
-        Bitmap bg = Bitmap.createBitmap(50, 100, Bitmap.Config.ARGB_8888);
+        Bitmap bg = Bitmap.createBitmap(1080, 100, Bitmap.Config.ARGB_8888);
+        int screenWidth = displayMetrics.getWidth();
 
         Canvas canvas = new Canvas(bg);
         paint.setColor(Color.RED);
 
-        int top = 0, right = screenWidth / 7;
+        int top = 5, right = (screenWidth - 185) / 7;
 
-        Toast.makeText(getContext(), "" + screenWidth, Toast.LENGTH_SHORT).show();
-        canvas.drawRect(0, 0, 80, 50, paint);
+        Toast.makeText(getContext(), "" + (100 - getCountDoneAch() * 100), Toast.LENGTH_SHORT).show();
+        //canvas.drawRect(0, 0, right, 50, paint);
 
-        /*for (int i = 0; i < 7; ++i){
-            canvas.drawRect(top, 0, right, 80, paint);
-            top += 40;
-            right += 40;
-        }*/
+        for (int i = 0; i < 7; ++i){
+            if (sp.getInt("cntDay", 0) > i){
+                canvas.drawRect(top, 0, right, 100, paint);
+            }
+            else if (sp.getInt("cntDay", 0) == i){
+                canvas.drawRect(top, 100 - (int) (getCountDoneAch() * 100), right, 100, paint);
+            }
+
+            top = right + 30;
+            right += (screenWidth - 180) / 7 + 30;
+        }
 
         surfaceView.setBackground(new BitmapDrawable(bg));
-
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
-        SharedPreferences.Editor editer = sp.edit();
 
         userName.setText(sp.getString("user_name", "error"));
 
@@ -219,13 +226,16 @@ public class ProfileFragment extends Fragment{
                 dialogEditName(getContext());
             }
         });
-
-
         return view;
     }
 
-    private int convertDpToPx(int dp){
-        return Math.round(dp * (getResources().getDisplayMetrics().xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    private double getCountDoneAch(){
+        loadDataAll();
+        double cntNotDone = 0;
+        for (int i = 0; i < goalArrayList.size(); ++i){
+            if(goalArrayList.get(i).isDoneAch()) cntNotDone++;
+        }
+        return cntNotDone / (double) goalArrayList.size();
     }
 
     private void dialogEditName(Context context) {
@@ -289,6 +299,9 @@ public class ProfileFragment extends Fragment{
                 SharedPreferences.Editor editer = sp.edit();
 
                 editer.putBoolean("mark", true);
+                if(sp.getInt("cntDay", 0) != 6)
+                    editer.putInt("cntDay", sp.getInt("cntDay", 0) + 1);
+                else editer.putInt("cntDay", 0);
                 editer.apply();
 
                 dialog.dismiss();

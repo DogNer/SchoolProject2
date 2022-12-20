@@ -80,6 +80,7 @@ public class RegisterWindow extends AppCompatActivity implements TimePickerDialo
                 String name = nameEdit.getText().toString();
 
                 editor.putString("user_name", name);
+                editor.putInt("cntDay", 0);
                 editor.commit();
                 /*DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");*/
