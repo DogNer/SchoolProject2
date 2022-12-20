@@ -1,19 +1,19 @@
 package com.example.schoolproject.Modal;
 
 public class StatisticsModal {
-    private String day;
+    private int day;
     private int cnt;
 
-    public StatisticsModal(int cnt) {
+    public StatisticsModal(int day, int cnt) {
         this.day = day;
         this.cnt = cnt;
     }
 
-    public String getDay() {
+    public int getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(int day) {
         this.day = day;
     }
 

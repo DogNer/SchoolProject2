@@ -72,8 +72,11 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -135,7 +138,12 @@ public class ProfileFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
         SharedPreferences.Editor editer = sp.edit();
+
         loadDataAll();
+
+        Calendar today = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
 
         userName = view.findViewById(R.id.user_name);
 
@@ -152,27 +160,28 @@ public class ProfileFragment extends Fragment{
 
         Paint paint = new Paint();
         surfaceView = view.findViewById(R.id.surface);
-        Bitmap bg = Bitmap.createBitmap(1080, 100, Bitmap.Config.ARGB_8888);
+        Bitmap bg = Bitmap.createBitmap(1080, 120, Bitmap.Config.ARGB_8888);
         int screenWidth = displayMetrics.getWidth();
 
         Canvas canvas = new Canvas(bg);
-        paint.setColor(Color.RED);
+        paint.setColor(getResources().getColor(R.color.zero_achive));
 
-        int top = 5, right = (screenWidth - 185) / 7;
+
 
         //Toast.makeText(getContext(), "" + (100 - getCountDoneAch() * 100), Toast.LENGTH_SHORT).show();
         //canvas.drawRect(0, 0, right, 50, paint);
-
-        //Toast.makeText(getContext(), "" + arrayListStat.size(), Toast.LENGTH_SHORT).show();
+        int top = 5, right = (screenWidth - 185) / 7;
+        //Toast.makeText(getContext(), "" + arrayListStat.get(0), Toast.LENGTH_SHORT).show();
 
         for (int i = 0; i < 7; ++i){
-            if (sp.getInt("cntDay", 0) > i && arrayListStat.size() != 0){
-                canvas.drawRect(top, arrayListStat.get(i).getCnt(), right, 100, paint);
+            for (int j = 0; j < arrayListStat.size(); ++j){
+                if (arrayListStat.get(j).getDay() == i) {
+                    paint.setColor(getResources().getColor(R.color.teal_700));
+                    canvas.drawRect(top, arrayListStat.get(j).getCnt(), right, 100, paint);
+                }
             }
-            else if (sp.getInt("cntDay", 0) == i){
-                canvas.drawRect(top, 100 - (int) (getCountDoneAch() * 100), right, 100, paint);
-            }
-
+            paint.setColor(getResources().getColor(R.color.zero_achive));
+            canvas.drawRect(top, 99, right, 100, paint);
             top = right + 30;
             right += (screenWidth - 180) / 7 + 30;
         }
@@ -183,7 +192,6 @@ public class ProfileFragment extends Fragment{
 
         AlarmTime.setText(String.format("%02d", sp.getInt("hour", 0)) + ":" + String.format("%02d", sp.getInt("minute", 0)));
 
-        Calendar today = Calendar.getInstance();
         today.set(Calendar.MILLISECOND, 0);
         today.set(Calendar.SECOND, 0);
         today.set(Calendar.MINUTE, 0);
@@ -213,7 +221,7 @@ public class ProfileFragment extends Fragment{
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialogInfo(view.getContext());
+                showDialogInfo(getContext());
             }
         });
 
@@ -290,6 +298,9 @@ public class ProfileFragment extends Fragment{
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dg_mark_achieve);
 
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+
         btnNo = dialog.findViewById(R.id.btn_no);
         btnYes = dialog.findViewById(R.id.btn_yes);
         btnClose = dialog.findViewById(R.id.close_btn);
@@ -299,8 +310,8 @@ public class ProfileFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 loadDataAll();
-                //Toast.makeText(context, "" + (100 - (int) (getCountDoneAch() * 100)), Toast.LENGTH_SHORT).show();
-                arrayListStat.add(new StatisticsModal(cnt));
+                Toast.makeText(context, "" + day, Toast.LENGTH_SHORT).show();
+                arrayListStat.add(new StatisticsModal(day, cnt));
                 saveDataTwo();
                 //Toast.makeText(context, "" + arrayListStat.size(), Toast.LENGTH_SHORT).show();
                 deleteArray();
@@ -341,6 +352,7 @@ public class ProfileFragment extends Fragment{
         //dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
+
 
     private void showDialogInfo(Context context) {
         final Dialog dialog = new Dialog(getContext());
