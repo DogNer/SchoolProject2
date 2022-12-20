@@ -56,6 +56,7 @@ import com.example.schoolproject.ActForScreen;
 import com.example.schoolproject.Adapter.AchieveAdapter;
 import com.example.schoolproject.Draw.DrawRectangle;
 import com.example.schoolproject.Modal.GoalModal;
+import com.example.schoolproject.Modal.StatisticsModal;
 import com.example.schoolproject.Personal_clock;
 import com.example.schoolproject.R;
 import com.example.schoolproject.ReminderBroadcast;
@@ -97,7 +98,7 @@ public class ProfileFragment extends Fragment{
 
     DrawRectangle drawRec;
     LinearLayout surfaceView;
-    ArrayList<Integer> arrayList;
+    private ArrayList<StatisticsModal> arrayListStat;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -159,12 +160,14 @@ public class ProfileFragment extends Fragment{
 
         int top = 5, right = (screenWidth - 185) / 7;
 
-        Toast.makeText(getContext(), "" + (100 - getCountDoneAch() * 100), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "" + (100 - getCountDoneAch() * 100), Toast.LENGTH_SHORT).show();
         //canvas.drawRect(0, 0, right, 50, paint);
 
+        //Toast.makeText(getContext(), "" + arrayListStat.size(), Toast.LENGTH_SHORT).show();
+
         for (int i = 0; i < 7; ++i){
-            if (sp.getInt("cntDay", 0) > i){
-                canvas.drawRect(top, arrayList.get(i), right, 100, paint);
+            if (sp.getInt("cntDay", 0) > i && arrayListStat.size() != 0){
+                canvas.drawRect(top, arrayListStat.get(i).getCnt(), right, 100, paint);
             }
             else if (sp.getInt("cntDay", 0) == i){
                 canvas.drawRect(top, 100 - (int) (getCountDoneAch() * 100), right, 100, paint);
@@ -290,13 +293,18 @@ public class ProfileFragment extends Fragment{
         btnNo = dialog.findViewById(R.id.btn_no);
         btnYes = dialog.findViewById(R.id.btn_yes);
         btnClose = dialog.findViewById(R.id.close_btn);
+        int cnt = 100 - (int) (getCountDoneAch() * 100);
 
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loadDataAll();
-                arrayList.add(100 - (int) (getCountDoneAch() * 100));
+                //Toast.makeText(context, "" + (100 - (int) (getCountDoneAch() * 100)), Toast.LENGTH_SHORT).show();
+                arrayListStat.add(new StatisticsModal(cnt));
+                saveDataTwo();
+                //Toast.makeText(context, "" + arrayListStat.size(), Toast.LENGTH_SHORT).show();
                 deleteArray();
+
                 saveData();
 
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
@@ -387,17 +395,27 @@ public class ProfileFragment extends Fragment{
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
         Gson gson = new Gson();
 
         String json = gson.toJson(goalArrayList);
-        String json_arr = gson.toJson(arrayList);
 
         editor.putString("goal", json);
-        editor.putString("arrayStat", json_arr);
 
         editor.apply();
         //t
+    }
+
+    private void saveDataTwo() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+
+        String json_arr = gson.toJson(arrayListStat);
+
+        editor.putString("arrayStat", json_arr);
+
+        editor.apply();
     }
 
     private void loadDataAll() {
@@ -409,15 +427,16 @@ public class ProfileFragment extends Fragment{
         String json_array = sharedPreferences.getString("arrayStat", null);
 
         Type type = new TypeToken<ArrayList<GoalModal>>() {}.getType();
+        Type type_int = new TypeToken<ArrayList<StatisticsModal>>() {}.getType();
 
         goalArrayList = gson.fromJson(json, type);
-        arrayList = gson.fromJson(json_array, type);
+        arrayListStat = gson.fromJson(json_array, type_int);
 
         if (goalArrayList == null) {
             goalArrayList = new ArrayList<>();
         }
-        if (arrayList == null) {
-            arrayList = new ArrayList<>();
+        if (arrayListStat == null) {
+            arrayListStat = new ArrayList<>();
         }
     }
 }

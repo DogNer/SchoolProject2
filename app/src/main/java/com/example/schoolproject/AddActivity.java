@@ -45,12 +45,6 @@ public class AddActivity extends AppCompatActivity {
     // Класс для работы потоком ввода в файл
     private FileOutputStream outputStream;
 
-    // полный путь к файлу
-    private String path = "C:\\hui\\tam.txt";
-
-    public void FileInputOutputStream(String path) {
-        this.path = path;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
