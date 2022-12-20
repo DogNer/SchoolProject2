@@ -103,6 +103,8 @@ public class ProfileFragment extends Fragment{
     LinearLayout surfaceView;
     private ArrayList<StatisticsModal> arrayListStat;
 
+    TextView sunday, monday;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -157,8 +159,26 @@ public class ProfileFragment extends Fragment{
         btnEditName = view.findViewById(R.id.edit_name);
         btnEditTime = view.findViewById(R.id.edit_time);
 
+        sunday = view.findViewById(R.id.sunday);
+        monday = view.findViewById(R.id.mon);
+
         Display displayMetrics = getActivity().getWindowManager().getDefaultDisplay();
 
+        sunday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayListStat.add(new StatisticsModal(1, 34));
+                saveDataTwo();
+            }
+        });
+
+        monday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayListStat.add(new StatisticsModal(2, 86));
+                saveDataTwo();
+            }
+        });
 
         Paint paint = new Paint();
         surfaceView = view.findViewById(R.id.surface);
@@ -175,14 +195,18 @@ public class ProfileFragment extends Fragment{
         int top = 5, right = (screenWidth - 185) / 7;
         //Toast.makeText(getContext(), "" + arrayListStat.get(0), Toast.LENGTH_SHORT).show();
 
-        for (int i = 0; i < 7; ++i){
+        for (int i = 1; i <= 7; ++i){
             if (i == day && !sp.getBoolean("mark", false)){
+                paint.setColor(getResources().getColor(R.color.zero_achive_hint));
+                canvas.drawRect(top, 0, right, 100 - (int) (getCountDoneAch() * 100), paint);
                 paint.setColor(getResources().getColor(R.color.teal_700));
                 canvas.drawRect(top, 100 - (int) (getCountDoneAch() * 100), right, 100, paint);
             }
             else {
                 for (int j = 0; j < arrayListStat.size(); ++j){
                     if (arrayListStat.get(j).getDay() == i) {
+                        paint.setColor(getResources().getColor(R.color.zero_achive_hint));
+                        canvas.drawRect(top, 0, right, arrayListStat.get(j).getCnt(), paint);
                         paint.setColor(getResources().getColor(R.color.teal_700));
                         canvas.drawRect(top, arrayListStat.get(j).getCnt(), right, 100, paint);
                     }
