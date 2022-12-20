@@ -139,10 +139,12 @@ public class ProfileFragment extends Fragment{
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
         SharedPreferences.Editor editer = sp.edit();
 
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+
         loadDataAll();
 
         Calendar today = Calendar.getInstance();
-        Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
 
         userName = view.findViewById(R.id.user_name);
@@ -174,10 +176,16 @@ public class ProfileFragment extends Fragment{
         //Toast.makeText(getContext(), "" + arrayListStat.get(0), Toast.LENGTH_SHORT).show();
 
         for (int i = 0; i < 7; ++i){
-            for (int j = 0; j < arrayListStat.size(); ++j){
-                if (arrayListStat.get(j).getDay() == i) {
-                    paint.setColor(getResources().getColor(R.color.teal_700));
-                    canvas.drawRect(top, arrayListStat.get(j).getCnt(), right, 100, paint);
+            if (i == day && !sp.getBoolean("mark", false)){
+                paint.setColor(getResources().getColor(R.color.teal_700));
+                canvas.drawRect(top, 100 - (int) (getCountDoneAch() * 100), right, 100, paint);
+            }
+            else {
+                for (int j = 0; j < arrayListStat.size(); ++j){
+                    if (arrayListStat.get(j).getDay() == i) {
+                        paint.setColor(getResources().getColor(R.color.teal_700));
+                        canvas.drawRect(top, arrayListStat.get(j).getCnt(), right, 100, paint);
+                    }
                 }
             }
             paint.setColor(getResources().getColor(R.color.zero_achive));
