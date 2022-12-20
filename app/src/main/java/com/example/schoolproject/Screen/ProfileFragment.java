@@ -68,6 +68,7 @@ import com.google.android.material.timepicker.TimeFormat;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -96,6 +97,7 @@ public class ProfileFragment extends Fragment{
 
     DrawRectangle drawRec;
     LinearLayout surfaceView;
+    ArrayList<Integer> arrayList;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -162,7 +164,7 @@ public class ProfileFragment extends Fragment{
 
         for (int i = 0; i < 7; ++i){
             if (sp.getInt("cntDay", 0) > i){
-                canvas.drawRect(top, 0, right, 100, paint);
+                canvas.drawRect(top, arrayList.get(i), right, 100, paint);
             }
             else if (sp.getInt("cntDay", 0) == i){
                 canvas.drawRect(top, 100 - (int) (getCountDoneAch() * 100), right, 100, paint);
@@ -293,10 +295,13 @@ public class ProfileFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 loadDataAll();
+                arrayList.add(100 - (int) (getCountDoneAch() * 100));
                 deleteArray();
                 saveData();
+
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(view.getContext());
                 SharedPreferences.Editor editer = sp.edit();
+
 
                 editer.putBoolean("mark", true);
                 if(sp.getInt("cntDay", 0) != 6)
@@ -386,7 +391,10 @@ public class ProfileFragment extends Fragment{
         Gson gson = new Gson();
 
         String json = gson.toJson(goalArrayList);
+        String json_arr = gson.toJson(arrayList);
+
         editor.putString("goal", json);
+        editor.putString("arrayStat", json_arr);
 
         editor.apply();
     }
@@ -397,13 +405,18 @@ public class ProfileFragment extends Fragment{
         Gson gson = new Gson();
 
         String json = sharedPreferences.getString("goal", null);
+        String json_array = sharedPreferences.getString("arrayStat", null);
 
         Type type = new TypeToken<ArrayList<GoalModal>>() {}.getType();
 
         goalArrayList = gson.fromJson(json, type);
+        arrayList = gson.fromJson(json_array, type);
 
         if (goalArrayList == null) {
             goalArrayList = new ArrayList<>();
+        }
+        if (arrayList == null) {
+            arrayList = new ArrayList<>();
         }
     }
 }
